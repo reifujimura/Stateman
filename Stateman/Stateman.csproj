@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageVersion>1.0.0-beta</PackageVersion>
+    <Authors>Rei Fujimura</Authors>
+    <Description>Stateman is a simple state machine for .NET</Description>
+    <Copyright>Copyright © Rei Fujimura 2019</Copyright>
+    <Summary>Stateman is a simple state machine for .NET</Summary>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Title>Stateman</Title>
+    <PackageProjectUrl>https://github.com/rf8409/Stateman</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/rf8409/Stateman/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
-
+  <ItemGroup>
+    <None Include="../LICENSE" Pack="true" PackagePath="LICENSE" />
+  </ItemGroup>
 </Project>

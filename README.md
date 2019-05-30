@@ -8,6 +8,12 @@ Stateman is simple state machine library for .NET languages.
 
 MIT License
 
+## Installation
+
+```
+dotnet add package Stateman --version 1.0.0-beta
+```
+
 ## Usage
 
 ```csharp
