@@ -1,5 +1,7 @@
 # Stateman
 
+[![Build Status](https://dev.azure.com/ReiFujimura/Stateman/_apis/build/status/rf8409.Stateman?branchName=master)](https://dev.azure.com/ReiFujimura/Stateman/_build/latest?definitionId=2&branchName=master)
+
 Stateman is simple state machine library for .NET languages.
 
 ## License
