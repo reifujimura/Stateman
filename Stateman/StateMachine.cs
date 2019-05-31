@@ -32,17 +32,19 @@ namespace Stateman
         }
         public void Transit<TStateFrom, TStateTo>() where TStateFrom : State where TStateTo : State, new()
         {
-            readerWriterLock.EnterUpgradeableReadLock();
+            readerWriterLock.EnterWriteLock();
             if (state is TStateFrom)
             {
-                readerWriterLock.EnterWriteLock();
                 previous.Push(state);
                 state = state.Generate<TStateTo>();
                 next.Clear();
                 readerWriterLock.ExitWriteLock();
                 Transited?.Invoke(this);
             }
-            readerWriterLock.ExitUpgradeableReadLock();
+            else
+            {
+                readerWriterLock.ExitWriteLock();
+            }
         }
 
         public void Previous()
@@ -63,6 +65,14 @@ namespace Stateman
             state = next.Pop();
             readerWriterLock.ExitWriteLock();
             Transited?.Invoke(this);
+        }
+
+        public void ClearHistory()
+        {
+            readerWriterLock.EnterWriteLock();
+            previous.Clear();
+            next.Clear();
+            readerWriterLock.ExitWriteLock();
         }
     }
 }
