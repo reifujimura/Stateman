@@ -11,10 +11,20 @@ MIT License
 ## Installation
 
 ```
-dotnet add package Stateman --version 1.0.0-beta
+dotnet add package Stateman
 ```
 
 ## Usage
+
+```csharp
+class FooState : State
+{
+}
+
+class BarState : State
+{
+}
+```
 
 ```csharp
 var stateMachine = new StateMachine(new FooState());
