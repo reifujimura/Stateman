@@ -1,12 +1,15 @@
 trigger:
 - master
+- feature/*
 
-pool:
-  vmImage: 'ubuntu-latest'
+jobs:
+  - job: UnitTests
+    pool:
+      vmImage: 'ubuntu-latest'
 
-variables:
-  buildConfiguration: 'Release'
+    variables:
+      buildConfiguration: 'Release'
 
-steps:
-- script: dotnet test --configuration $(buildConfiguration)
-  displayName: 'dotnet test $(buildConfiguration)'
+    steps:
+    - script: dotnet test --configuration $(buildConfiguration)
+      displayName: 'dotnet test $(buildConfiguration)'

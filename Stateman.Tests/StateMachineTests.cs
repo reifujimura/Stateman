@@ -92,5 +92,19 @@ namespace Stateman.Tests
             Assert.Equal(typeof(AnotherState), stateMachine.State.GetType());
             Assert.Equal(9, invokeCount);
         }
+
+        [Fact]
+        public void ClearHistoryTest()
+        {
+            var stateMachine = new StateMachine(new TestState1() { Value = 10 });
+            stateMachine.Transit<TestState1, TestState2>();
+            stateMachine.Transit<TestState2, TestState1>();
+            stateMachine.Previous();
+            stateMachine.ClearHistory();
+            stateMachine.Previous();
+            Assert.Equal(typeof(TestState2), stateMachine.State.GetType());
+            stateMachine.Next();
+            Assert.Equal(typeof(TestState2), stateMachine.State.GetType());
+        }
     }
 }
