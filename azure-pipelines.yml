@@ -3,13 +3,15 @@ trigger:
 - feature/*
 
 jobs:
-  - job: UnitTests
-    pool:
-      vmImage: 'ubuntu-latest'
+- job: UnitTests
+  pool:
+    vmImage: 'ubuntu-latest'
 
-    variables:
-      buildConfiguration: 'Release'
+  variables:
+    buildConfiguration: 'Release'
 
-    steps:
-    - script: dotnet test --configuration $(buildConfiguration)
-      displayName: 'dotnet test $(buildConfiguration)'
+  steps:
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'test'
+      arguments: '--configuration $(buildConfiguration)'
