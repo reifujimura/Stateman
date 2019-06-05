@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Authors>Rei Fujimura</Authors>
     <Description>Stateman is a simple state machine for .NET</Description>
     <Copyright>Copyright © Rei Fujimura 2019</Copyright>
