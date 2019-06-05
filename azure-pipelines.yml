@@ -1,6 +1,5 @@
 trigger:
 - master
-- feature/*
 
 jobs:
 - job: UnitTests

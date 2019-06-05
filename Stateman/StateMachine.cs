@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Stateman
 {
-    public sealed class StateMachine
+    public class StateMachine
     {
         public event Action<StateMachine> Transited;
         private readonly ReaderWriterLockSlim readerWriterLock = new ReaderWriterLockSlim();
