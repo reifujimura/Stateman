@@ -21,6 +21,9 @@ namespace Stateman.Tests
                     case AnotherState anotherState:
                         Assert.Equal(0, anotherState.Value);
                         break;
+                    case ConfigureState configureState:
+                        Assert.Equal(100, configureState.Value);
+                        break;
                 }
                 invokeCount++;
             };
@@ -39,6 +42,8 @@ namespace Stateman.Tests
             stateMachine.Transit<AnotherState, AnotherState>();
             Assert.Equal(typeof(AnotherState), stateMachine.State.GetType());
             Assert.Equal(4, invokeCount);
+            stateMachine.Transit<AnotherState, ConfigureState>(state => state.Value = 100);
+            Assert.Equal(5, invokeCount);
         }
 
         [Fact]
