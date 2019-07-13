@@ -30,14 +30,16 @@ namespace Stateman
             }
             state = defaultState;
         }
-        public void Transit<TStateFrom, TStateTo>() where TStateFrom : State where TStateTo : State, new()
+        public void Transit<TStateFrom, TStateTo>(Action<TStateTo> configureState = null) where TStateFrom : State where TStateTo : State, new()
         {
             readerWriterLock.EnterWriteLock();
             if (state is TStateFrom)
             {
                 previous.Push(state);
-                state = state.Generate<TStateTo>();
+                var nextState = state.Generate<TStateTo>();
                 next.Clear();
+                configureState?.Invoke(nextState);
+                state = nextState;
                 readerWriterLock.ExitWriteLock();
                 Transited?.Invoke(this);
             }
